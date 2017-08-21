@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/GMWolf/artemis-odb-eeel.svg?branch=master)](https://travis-ci.org/GMWolf/artemis-odb-eeel)
 # artemis-odb-eeel
 Easy Entity Event Listening
 

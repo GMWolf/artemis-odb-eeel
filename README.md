@@ -61,3 +61,17 @@ You can register any other objects to listen to events using the EEELSystem.regi
 ```java
 world.getSystem(EEELSystem.class).register(MyListener);
 ```
+
+## Getting started
+
+### Maven
+```xml
+<dependency>
+	<groupId>net.fbridault.eeel</groupId>
+	<artifactId>artemis-odb-eeel</artifactId>
+	<version>1.0</version>
+</dependency>
+```
+
+### Gradle
+dependencies { compile "net.fbridault.eeel:artemis-odb-eeel:1.0" }

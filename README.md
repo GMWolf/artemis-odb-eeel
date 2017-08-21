@@ -74,4 +74,6 @@ world.getSystem(EEELSystem.class).register(MyListener);
 ```
 
 ### Gradle
+```gradle
 dependencies { compile "net.fbridault.eeel:artemis-odb-eeel:1.0" }
+```

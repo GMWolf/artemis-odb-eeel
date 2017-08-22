@@ -1,6 +1,5 @@
 package net.fbridault.eeel.annotation;
 
-import com.artemis.Aspect;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

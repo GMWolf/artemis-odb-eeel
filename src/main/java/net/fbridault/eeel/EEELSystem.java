@@ -86,74 +86,49 @@ public class EEELSystem extends BaseSystem {
         return world.getAspectSubscriptionManager().get(builder);
     }
 
-    private EntitySubscription.SubscriptionListener getEntitySubscriptionListener(final Object listener, final Method method, final boolean insert, final boolean remove) {
-        if (insert) {
-            if (remove) {
-                return new EntitySubscription.SubscriptionListener() {
+    private EntitySubscription.SubscriptionListener getEntitySubscriptionListener(final Object listener, final Method method, boolean insert, boolean remove) {
 
-                    public void inserted(IntBag intBag) {
-                        try {
-                            for (int i = 0; i < intBag.size(); i++) {
-                                method.invoke(listener, intBag.get(i));
-                            }
-                        } catch (IllegalAccessException | InvocationTargetException e) {
-                            e.printStackTrace();
-                        }
+        EntityListener invoker = getInvoker(listener, method);
 
-                    }
+        EntityListener insertedListener = insert ? invoker : EntityListener.none;
+        EntityListener removedListener = remove ? invoker : EntityListener.none;
 
-                    public void removed(IntBag intBag) {
-                        try {
-                            for (int i = 0; i < intBag.size(); i++) {
-                                method.invoke(listener, intBag.get(i));
-                            }
-                        } catch (IllegalAccessException | InvocationTargetException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                };
 
-            } else {
-                return new EntitySubscription.SubscriptionListener() {
-
-                    public void inserted(IntBag intBag) {
-                        try {
-                            for (int i = 0; i < intBag.size(); i++) {
-                                method.invoke(listener, intBag.get(i));
-                            }
-                        } catch (IllegalAccessException | InvocationTargetException e) {
-                            e.printStackTrace();
-                        }
-
-                    }
-
-                    public void removed(IntBag intBag) {
-                    }
-                };
+        return new EntitySubscription.SubscriptionListener() {
+            @Override
+            public void inserted(IntBag entities) {
+                insertedListener.process(entities);
             }
-        } else {
-            if (remove) {
-                return new EntitySubscription.SubscriptionListener() {
+            @Override
+            public void removed(IntBag entities) {
+                removedListener.process(entities);
+            }
+        };
+    }
 
-                    public void inserted(IntBag intBag) {
-                    }
+    private EntityListener getInvoker(final Object listener, final  Method method) {
+        return entityId -> {
+            try {
+                method.invoke(listener, entityId);
+            } catch (IllegalAccessException | InvocationTargetException e) {
+                e.printStackTrace();
+            }
+        };
+    }
 
 
-                    public void removed(IntBag intBag) {
-                        try {
-                            for (int i = 0; i < intBag.size(); i++) {
-                                method.invoke(listener, intBag.get(i));
-                            }
-                        } catch (IllegalAccessException | InvocationTargetException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                };
-            } else {
-                throw new IllegalStateException("Cannot have no cases!");
+    private interface EntityListener {
+        void process(int entityId);
+
+        EntityListener none = entityId -> {};
+
+        default void process(IntBag entities) {
+            for(int i = 0; i < entities.size(); i++) {
+                process(entities.get(i));
             }
         }
     }
+
 
 
 }

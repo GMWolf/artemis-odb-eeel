@@ -104,11 +104,11 @@ EEELSystem.inserted(Aspect.all(Position.class), entity -> {
 <dependency>
 	<groupId>net.fbridault.eeel</groupId>
 	<artifactId>artemis-odb-eeel</artifactId>
-	<version>1.0</version>
+	<version>1.1</version>
 </dependency>
 ```
 
 ### Gradle
 ```gradle
-dependencies { compile "net.fbridault.eeel:artemis-odb-eeel:1.0" }
+dependencies { compile "net.fbridault.eeel:artemis-odb-eeel:1.1" }
 ```

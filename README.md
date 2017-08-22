@@ -58,7 +58,7 @@ class MySystem extends BaseSystem {
 
 As you can see, EEEL removes the need for event listeners, and thus makes complex systems much easier to manage.
 
-## Annotations in other objects
+### Annotations in other objects
 You can register any other objects to listen to events using the EEELSystem.register function:
 ```java
 world.getSystem(EEELSystem.class).register(MyListener);

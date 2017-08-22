@@ -19,6 +19,7 @@ world = new World(config);
 
 Any system can then subscribe to entities.
 
+## Using Annotations
 
 Any system can subscribe to Aspects by using the `@Inserted` and `@Removed` annotations, along side the `@All`, `@One` and `@Exclude` annotations.
 ```java

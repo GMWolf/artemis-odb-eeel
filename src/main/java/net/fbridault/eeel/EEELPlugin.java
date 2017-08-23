@@ -7,9 +7,9 @@ import com.artemis.*;
  */
 public class EEELPlugin implements ArtemisPlugin {
 
-
     public void setup(WorldConfigurationBuilder worldConfigurationBuilder) {
         worldConfigurationBuilder.with(new EEELSystem());
+        worldConfigurationBuilder.with(new EEELAnnotationSystem());
     }
 
 }

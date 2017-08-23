@@ -19,6 +19,7 @@ world = new World(config);
 
 Any system can then subscribe to entities.
 
+## Using Annotations
 
 Any system can subscribe to Aspects by using the `@Inserted` and `@Removed` annotations, along side the `@All`, `@One` and `@Exclude` annotations.
 ```java
@@ -57,7 +58,7 @@ class MySystem extends BaseSystem {
 
 As you can see, EEEL removes the need for event listeners, and thus makes complex systems much easier to manage.
 
-## Annotations in other objects
+### Annotations in other objects
 You can register any other objects to listen to events using the EEELSystem.register function:
 ```java
 world.getSystem(EEELSystem.class).register(MyListener);
@@ -104,11 +105,11 @@ EEELSystem.inserted(Aspect.all(Position.class), entity -> {
 <dependency>
 	<groupId>net.fbridault.eeel</groupId>
 	<artifactId>artemis-odb-eeel</artifactId>
-	<version>1.0</version>
+	<version>1.1</version>
 </dependency>
 ```
 
 ### Gradle
 ```gradle
-dependencies { compile "net.fbridault.eeel:artemis-odb-eeel:1.0" }
+dependencies { compile "net.fbridault.eeel:artemis-odb-eeel:1.1" }
 ```

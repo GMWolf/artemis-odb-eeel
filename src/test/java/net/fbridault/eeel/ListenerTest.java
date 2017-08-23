@@ -27,11 +27,15 @@ public class ListenerTest {
         return Arrays.asList(new Object[][] {
                 {
                     "Annotations",
-                    new AnnotationTestSystem()
+                        new AnnotationTestSystem()
                 },
                 {
-                    "Registration",
-                    new RegistrationTestSystem()
+                    "System Registration",
+                        new SystemRegistrationTestSystem()
+                },
+                {
+                    "Object Registration",
+                        new TestObjectRegistrationSystem()
                 }
         });
     }
@@ -147,7 +151,7 @@ public class ListenerTest {
         }
     }
 
-    static class RegistrationTestSystem extends BaseSystem {
+    static class SystemRegistrationTestSystem extends BaseSystem {
 
         EEELSystem EEELSystem;
         private ComponentMapper<Confirmation> confirmationMapper;
@@ -177,6 +181,46 @@ public class ListenerTest {
         @Override
         protected void processSystem() {
         }
+    }
+
+    static class TestObjectRegistrationSystem extends BaseSystem {
+
+        EEELSystem eeelSystem;
+        @Override
+        protected void initialize() {
+            TestObject test = new TestObject();
+            world.inject(test);
+            eeelSystem.register(test);
+        }
+
+        @Override
+        protected void processSystem() {
+
+        }
+    }
+
+    static class TestObject {
+        private ComponentMapper<Confirmation> confirmationMapper;
+
+        @Inserted
+        @All(ComponentA.class)
+        public void AInserted(int entityId) {
+            confirmationMapper.set(entityId, true);
+        }
+
+        @Inserted
+        @All({ComponentA.class, ComponentB.class})
+        public void ABInserted(int entityId) {
+
+            confirmationMapper.set(entityId, true);
+        }
+
+        @Removed
+        @All({ComponentA.class, ComponentB.class})
+        public void ABRemoved(int entityId) {
+            confirmationMapper.remove(entityId);
+        }
+
     }
 
 

@@ -33,6 +33,9 @@ public class EEELSystem extends BaseSystem {
         registerEntityListener(aspect, getSubscriptionListener(EntityListener.NONE, listener));
     }
 
+    public void register(Object object) {
+        annotationSystem.register(object);
+    }
 
     private void registerSystems() {
         annotationSystem.registerSystems();
@@ -63,10 +66,5 @@ public class EEELSystem extends BaseSystem {
             }
         };
     }
-
-
-
-
-
 
 }

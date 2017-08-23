@@ -24,7 +24,7 @@ public class EEELAnnotationSystem extends BaseSystem {
         }
     }
 
-    private void register(Object object) {
+    void register(Object object) {
         for (Method method : object.getClass().getDeclaredMethods()) {
             Inserted inserted = method.getAnnotation(Inserted.class);
             Removed removed = method.getAnnotation(Removed.class);

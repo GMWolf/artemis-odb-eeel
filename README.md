@@ -4,7 +4,7 @@ Easy Entity Event Listening
 
 EEEL is a drop in plugin for [Artemis-odb](https://github.com/junkdog/artemis-odb)
 
-EEEL provided an easy annotation based interface to subscribe to Entity events.
+EEEL provides an eas interface to subscribe to entity events. Using either Annotations, or more traditional subscriptions for better performance.
 
 ## Susbscribing to Aspects
 

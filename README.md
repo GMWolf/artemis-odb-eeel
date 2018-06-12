@@ -4,8 +4,9 @@ Easy Entity Event Listening
 
 EEEL is a drop in plugin for [Artemis-odb](https://github.com/junkdog/artemis-odb)
 
-EEEL provided an easy annotation based interface to subscribe to Entity events.
+EEEL provides an easy annotation based interface to subscribe to Entity events.
 
+EEEL also provides an event bus to dispatch entity-bound events, and listen to events based on the related entitie's aspect.
 ## Susbscribing to Aspects
 
 The first step to using EEEL is to add the plugin to your world:
@@ -98,6 +99,35 @@ EEELSystem.inserted(Aspect.all(Position.class), entity -> {
 });
 ```
 
+## Custom Events
+
+EEEL also provides an Event Bus for custom events.
+Events can be dispatched for individual entities, and systems can subscribe to events according to their matching apsects.
+
+Dispatching events
+```java
+EEElEventSystem eventSystem;
+
+ public void CalculateDamage(int entity) {
+     int damage = 5;
+     eventSystem.dispatchEvent(new DamageEvent(damage), entity);
+ }
+
+```
+
+subscribing to events
+```java
+EEELEventSystem eventSystem;
+
+public void initialize() {
+    eventSystem.registerEvent(this::onDamage, DamageEvent.class, Aspect.all(Health.class).exclude(Armor.class));
+}
+
+public void onDamage(DamageEvent event, int entity) {
+    //do something
+}
+
+```
 ## Getting started
 
 ### Maven

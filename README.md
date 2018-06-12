@@ -135,11 +135,11 @@ public void onDamage(DamageEvent event, int entity) {
 <dependency>
 	<groupId>net.fbridault.eeel</groupId>
 	<artifactId>artemis-odb-eeel</artifactId>
-	<version>1.1</version>
+	<version>1.2</version>
 </dependency>
 ```
 
 ### Gradle
 ```gradle
-dependencies { compile "net.fbridault.eeel:artemis-odb-eeel:1.1" }
+dependencies { compile "net.fbridault.eeel:artemis-odb-eeel:1.2" }
 ```

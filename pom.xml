@@ -6,7 +6,7 @@
 
     <groupId>net.fbridault.eeel</groupId>
     <artifactId>artemis-odb-eeel</artifactId>
-    <version>1.1</version>
+    <version>1.2</version>
     <packaging>jar</packaging>
     <description>Drop-in Extension for artemis-odb. Annotation bases entity event listeners</description>
     <url>https://github.com/GMWolf/artemis-odb-eeel</url>

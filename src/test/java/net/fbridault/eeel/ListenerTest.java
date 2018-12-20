@@ -20,8 +20,6 @@ import static org.junit.Assert.*;
 @RunWith(Parameterized.class)
 public class ListenerTest {
 
-
-
     @Parameterized.Parameters(name = "{index}: {0}")
     public static Collection listeners() {
         return Arrays.asList(new Object[][] {

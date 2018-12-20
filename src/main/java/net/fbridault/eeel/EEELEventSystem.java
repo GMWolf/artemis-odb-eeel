@@ -13,11 +13,10 @@ import java.util.Map;
 public class EEELEventSystem extends BaseSystem {
 
 
-    private Map<Class<?>, List<Pair<EventListener, Aspect>>> listenerMap;
+    private final Map<Class<?>, List<Pair<EventListener, Aspect>>> listenerMap = new HashMap<>();
 
     @Override
     protected void initialize() {
-        listenerMap = new HashMap<>();
     }
 
     public <T> void registerEvent(EventListener<T> listener, Class<?> eventType,  Aspect.Builder aspect) {

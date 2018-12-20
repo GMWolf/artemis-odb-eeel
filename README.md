@@ -75,9 +75,11 @@ This is does easily with the `EEELSystem.inserted` and `EEELSystem.removed` meth
 ```java
 class MySystem extends BaseSystem {
     
+    EEELSystem eeel;
+    
     protected void initialize() {
-        EEELSystem.inserted(Aspect.all(health.class, attack.class), this::handleAttack);
-        EEELSystem.removed(Aspect.all(health.class), this::handleDead);
+        eeel.inserted(Aspect.all(health.class, attack.class), this::handleAttack);
+        eeel.removed(Aspect.all(health.class), this::handleDead);
     }
     
     public handleAttack(int entity) {
@@ -94,7 +96,7 @@ class MySystem extends BaseSystem {
 
 This example shows the use of Method references, but lambdas can be used in the same way:
 ```java
-EEELSystem.inserted(Aspect.all(Position.class), entity -> {
+eeel.inserted(Aspect.all(Position.class), entity -> {
    //do something
 });
 ```
@@ -135,11 +137,11 @@ public void onDamage(DamageEvent event, int entity) {
 <dependency>
 	<groupId>net.fbridault.eeel</groupId>
 	<artifactId>artemis-odb-eeel</artifactId>
-	<version>1.1</version>
+	<version>1.2</version>
 </dependency>
 ```
 
 ### Gradle
 ```gradle
-dependencies { compile "net.fbridault.eeel:artemis-odb-eeel:1.1" }
+dependencies { compile "net.fbridault.eeel:artemis-odb-eeel:1.2" }
 ```

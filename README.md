@@ -102,7 +102,7 @@ eeel.inserted(Aspect.all(Position.class), entity -> {
 ```
 
 ## Custom Events
-
+EEEL custom events is an experimental, proof of concept feature.
 EEEL also provides an Event Bus for custom events.
 Events can be dispatched for individual entities, and systems can subscribe to events according to their matching apsects.
 

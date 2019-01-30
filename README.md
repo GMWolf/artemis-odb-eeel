@@ -143,5 +143,5 @@ public void onDamage(DamageEvent event, int entity) {
 
 ### Gradle
 ```gradle
-dependencies { compile "net.fbridault.eeel:artemis-odb-eeel:1.2" }
+dependencies { compile "net.fbridault.eeel:artemis-odb-eeel:1.2.1" }
 ```

@@ -1,14 +1,14 @@
 package net.fbridault.eeel;
 
-import com.artemis.Aspect;
-import com.artemis.BaseSystem;
-import javafx.util.Pair;
-
-import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import com.artemis.Aspect;
+import com.artemis.BaseSystem;
+
+import net.fbridault.eeel.util.Pair;
 
 public class EEELEventSystem extends BaseSystem {
 
